@@ -1,16 +1,37 @@
 [project]
 name = "iitp-interpolation"
 version = "0.1.0"
-description = ""
+dynamic = ["version"]
+description = "Study project about interpolation"
 authors = [
-    {name = "bunin-kirill",email = "kirbucom@gmail.com"}
+    {name = "bunin-kirill", email = "kirbucom@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = [
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Typing :: Typed",
 ]
-
-
+dependencies = ["click (>=8.1.8,<9.0.0)"]
+[project.urls]
+"Homepage" = "https://github.com/kirbu123/iitp_interpolation"
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = [
+  "setuptools",
+  "wheel",
+]
+build-backend = "setuptools.build_meta"
+[tool.black]
+line-length = 79
+target-version = ["py311"]
+# [tool.setuptools]
+# include-package-data = false
+[tool.setuptools.packages.find]
+where = ["."]
+include = []
+exclude = []
+namespaces = false
+[tool.poetry.scripts]
+iitp-interpolation = "iitp_interpolation.console:main"
