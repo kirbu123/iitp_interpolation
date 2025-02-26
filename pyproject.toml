@@ -14,7 +14,7 @@ classifiers = [
   "Operating System :: OS Independent",
   "Typing :: Typed",
 ]
-dependencies = ["click (>=8.1.8,<9.0.0)"]
+dependencies = ["click (>=8.1.8,<9.0.0)", "requests (>=2.32.3,<3.0.0)"]
 [project.urls]
 "Homepage" = "https://github.com/kirbu123/iitp_interpolation"
 [build-system]
