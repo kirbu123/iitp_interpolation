@@ -48,4 +48,4 @@ def npinterpn(*args, **kw):
 __doc__ = interpn.__doc__
 
 def main():
-	print("Hello, world!")
+	print("interp module running...")

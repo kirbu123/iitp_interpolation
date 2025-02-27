@@ -55,3 +55,6 @@ class RegularGrid(object):
 		return value
 
 __doc__ = RegularGrid.__doc__
+
+def main():
+	print("regulargrid module runnning...")

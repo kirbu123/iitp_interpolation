@@ -19,3 +19,23 @@ class CartesianGrid(object):
 			cval=numpy.nan, order=1)
 
 __doc__ = CartesianGrid.__doc__
+
+def main():
+	limits = [(0, 1), (0, 1), (0, 1)]
+	x = numpy.linspace(0, 1, 8)
+	y = numpy.linspace(0, 1, 9)
+	z = numpy.linspace(0, 1, 10)
+
+	Z, Y = numpy.meshgrid(z, y)
+	X = numpy.array([[x]]).transpose()
+
+	# our grid values
+	values = X**2 + Y - Z
+
+	# does linear interpolation
+	grid = CartesianGrid(limits, values)
+
+	# interpolate for one point
+	print(grid([0.1], [0.5], [0.3]))
+	# interpolate many
+	print(grid([0.1, 0.3], [0.5, 0.5], [0.3, 0.2]))
