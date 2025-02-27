@@ -1,0 +1,30 @@
+# Python virtual environments
+venv/
+env/
+.venv/
+.env/
+.python-version
+
+# Python cache files
+src/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Local development settings
+.env
+.env.local
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Poetry settings
+poetry.lock
