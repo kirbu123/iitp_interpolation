@@ -14,7 +14,7 @@ classifiers = [
   "Operating System :: OS Independent",
   "Typing :: Typed",
 ]
-dependencies = ["click (>=8.1.8,<9.0.0)", "requests (>=2.32.3,<3.0.0)", "scipy (>=1.15.2,<2.0.0)"]
+dependencies = ["click (>=8.1.8,<9.0.0)", "requests (>=2.32.3,<3.0.0)", "scipy (>=1.15.2,<2.0.0)", "argparse (>=1.4.0,<2.0.0)", "pillow (>=11.1.0,<12.0.0)", "matplotlib (>=3.10.1,<4.0.0)"]
 [project.urls]
 "Homepage" = "https://github.com/kirbu123/iitp_interpolation"
 [build-system]
@@ -34,7 +34,9 @@ include = []
 exclude = []
 namespaces = false
 [tool.poetry.scripts]
-console = "iitp_interpolation.console:main"
-interp = "iitp_interpolation.interpn:main"
-cartesiangrid = "iitp_interpolation.cartesiangrid:main"
-regulargrid = "iitp_interpolation.regulargrid:main"
+format = "black:main"
+interp = "iitp_interpolation.main:interp"
+cartesiangrid = "iitp_interpolation.main:cartesiangrid"
+regulargrid = "iitp_interpolation.main:regulargrid"
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
