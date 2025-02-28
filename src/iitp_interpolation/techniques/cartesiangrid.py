@@ -1,8 +1,6 @@
+
 import numpy as np
-import argparse
 import scipy.ndimage
-from PIL import Image
-import matplotlib.pyplot as plt
 
 
 class CartesianGrid(object):
@@ -20,7 +18,7 @@ class CartesianGrid(object):
         coords = np.asarray(coords)
         coords = [
             (c - lo) * (n - 1) / (hi - lo)
-            for (lo, hi), c, n in zip(self.limits, coords, self.values.shape)
+            for (lo, hi), c, n in zip(self.limits, coords, self.values.shape, strict=False)
         ]
 
         return scipy.ndimage.map_coordinates(

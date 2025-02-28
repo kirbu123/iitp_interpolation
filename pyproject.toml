@@ -15,28 +15,87 @@ classifiers = [
   "Typing :: Typed",
 ]
 dependencies = ["click (>=8.1.8,<9.0.0)", "requests (>=2.32.3,<3.0.0)", "scipy (>=1.15.2,<2.0.0)", "argparse (>=1.4.0,<2.0.0)", "pillow (>=11.1.0,<12.0.0)", "matplotlib (>=3.10.1,<4.0.0)"]
+
+
 [project.urls]
 "Homepage" = "https://github.com/kirbu123/iitp_interpolation"
+
+
 [build-system]
 requires = [
   "setuptools",
   "wheel",
 ]
 build-backend = "setuptools.build_meta"
+
+
 [tool.black]
 line-length = 79
 target-version = ["py311"]
 # [tool.setuptools]
 # include-package-data = false
+
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = []
 exclude = []
 namespaces = false
+
+
 [tool.poetry.scripts]
 format = "black:main"
-interp = "iitp_interpolation.main:interp"
-cartesiangrid = "iitp_interpolation.main:cartesiangrid"
-regulargrid = "iitp_interpolation.main:regulargrid"
+interp = "iitp_interpolation.main:module_interp"
+cartesiangrid = "iitp_interpolation.main:module_cartesiangrid"
+regulargrid = "iitp_interpolation.main:module_regulargrid"
+
+
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
+ruff = "^0.9.9"
+
+
+[tool.ruff]
+# Enable flake8-bugbear (\B) rules.
+select = ["E", "F", "B", "I"]
+ignore = ["E501", "E741"]  # Ignore line length violations and others
+
+# Allow autofix for all enabled rules (when \--fix\) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10

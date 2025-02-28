@@ -1,5 +1,7 @@
-import numpy
 import itertools
+
+import numpy
+
 
 class RegularGrid(object):
 	"""
@@ -9,7 +11,7 @@ class RegularGrid(object):
 		assert len(breaks) == len(limits), [len(breaks), len(limits)]
 		
 		gridall = []
-		for l, b in zip(limits, breaks):
+		for l, b in zip(limits, breaks, strict=False):
 			assert b == [] or numpy.all(numpy.asarray(b) > l[0]), [b, l[0]]
 			assert b == [] or numpy.all(numpy.asarray(b) < l[1]), [b, l[1]]
 			grid = numpy.array([l[0]] + list(b) + [l[1]])
@@ -29,7 +31,7 @@ class RegularGrid(object):
 		indices = []
 		# compute distance to lower edge in unity units
 		norm_distances = []
-		for coord, breaks in zip(coords, self.grid):
+		for coord, breaks in zip(coords, self.grid, strict=False):
 			i = numpy.searchsorted(breaks, coord) - 1
 			i = numpy.where(i == -1, 0, i)
 			#if i == -1:
@@ -49,7 +51,7 @@ class RegularGrid(object):
 			weight = 1.
 			#for ei, i, breaks, yi in zip(edge_indices, indices, self.grid, y):
 				#j = j * len(breaks) + ei
-			for ei, i, yi in zip(edge_indices, indices, norm_distances):
+			for ei, i, yi in zip(edge_indices, indices, norm_distances, strict=False):
 				weight *= numpy.where(ei == i, 1 - yi, yi)
 			value += self.values[edge_indices] * weight
 		return value

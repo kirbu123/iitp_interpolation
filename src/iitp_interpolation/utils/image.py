@@ -1,6 +1,7 @@
-from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image
+
 
 def show_image(img: np.ndarray):
     # Display the image
