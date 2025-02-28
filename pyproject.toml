@@ -45,8 +45,8 @@ namespaces = false
 
 [tool.poetry.scripts]
 format = "black:main"
-interp = "iitp_interpolation.main:module_interp"
 cartesiangrid = "iitp_interpolation.main:module_cartesiangrid"
+interp = "iitp_interpolation.main:module_interp"
 regulargrid = "iitp_interpolation.main:module_regulargrid"
 
 
