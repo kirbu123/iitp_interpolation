@@ -1,6 +1,3 @@
-
-
-
 <div align="center">
   <h1>This is the main interpolation techniques implementation directory</h1>
 </div>
