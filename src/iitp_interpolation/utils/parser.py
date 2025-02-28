@@ -2,6 +2,7 @@ import argparse
 import numpy as np
 from .image import path_to_image
 from typing import Dict
+from .utils import *
 
 class Parser(argparse.ArgumentParser):
    def __init__(self, module_name: str='cartesiangrid', describition: str='Argument parse process...'):
@@ -12,8 +13,8 @@ class Parser(argparse.ArgumentParser):
        if self.module_name == 'cartesiangrid':
           self.add_argument('--image_path', type=str, help='Path to the input image file', default=None)
           self.add_argument('--limits', type=list, help='Limits to the interpolation', default=[(0, 1), (0, 1), (0, 1)])
-          self.add_argument('--points', type=tuple, help='Points for interpolation', default=([0.1], [0.5], [0.3]))
-          
+          self.add_argument('--points', type=parse_tuple, help='Points for interpolation', default=([0.1], [0.5], [0.3]))
+
        self.args = self.parse_args()
 
    def get_params(self) -> Dict:
