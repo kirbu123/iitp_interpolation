@@ -1,7 +1,10 @@
 
-### This is the main interpolation techniques implementation directory
 
----
+
+<div align="center">
+  <h1>This is the main interpolation techniques implementation directory</h1>
+</div>
+
 <div align="center">
   <h1 style="color: gold;">Description</h1>
 </div>

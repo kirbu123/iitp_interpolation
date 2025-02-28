@@ -1,5 +1,6 @@
-from scipy.interpolate import interp1d
 from numpy import interp
+from scipy.interpolate import interp1d
+
 
 def interpn(*args, **kw):
 	"""Interpolation on N-D. 

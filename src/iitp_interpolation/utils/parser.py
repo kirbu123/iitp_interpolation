@@ -1,8 +1,11 @@
 import argparse
-import numpy as np
-from .image import path_to_image
 from typing import Dict
-from .utils import *
+
+import numpy as np
+
+from .image import path_to_image
+from .utils import parse_tuple
+
 
 class Parser(argparse.ArgumentParser):
    def __init__(self, module_name: str='cartesiangrid', describition: str='Argument parse process...'):
