@@ -1,9 +1,10 @@
 import numpy as np
-from .cartesiangrid import CartesianGrid
-from .interpn import interpn, npinterpn
-from .regulargrid import RegularGrid
+from .techniques.cartesiangrid import CartesianGrid
+from .techniques.interpn import interpn, npinterpn
+from .techniques.regulargrid import RegularGrid
 from .utils.image import show_image, path_to_image
 from .utils.parser import Parser
+
 
 def cartesiangrid():
 
@@ -23,6 +24,7 @@ def cartesiangrid():
 
     # interpolate for given points
     print(f'interpolate for given points: {grid(points[0], points[1], points[2])}')
+
 
 def interpn():
     print("interp module running...")
