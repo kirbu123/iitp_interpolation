@@ -46,8 +46,6 @@ namespaces = false
 [tool.poetry.scripts]
 format = "black:main"
 cartesiangrid = "iitp_interpolation.main:module_cartesiangrid"
-interp = "iitp_interpolation.main:module_interp"
-regulargrid = "iitp_interpolation.main:module_regulargrid"
 nearest_neighbour = "iitp_interpolation.main:nearest_neighbour"
 bilinear = "iitp_interpolation.main:bilinear"
 bicubic = "iitp_interpolation.main:bicubic"
@@ -55,6 +53,8 @@ bicubic = "iitp_interpolation.main:bicubic"
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
 ruff = "^0.9.9"
+pytest = "^8.3.5"
+pytest-cov = "^6.0.0"
 
 
 [tool.ruff]

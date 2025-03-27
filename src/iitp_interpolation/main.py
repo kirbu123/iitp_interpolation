@@ -1,4 +1,3 @@
-
 from .techniques.bicubic import bicubic_interpolation
 from .techniques.bilinear import bilinear_interpolation
 from .techniques.cartesiangrid import CartesianGrid
@@ -30,14 +29,6 @@ def module_cartesiangrid():
     print(
         f"interpolate for given points: {grid(points[0], points[1], points[2])}"
     )
-
-
-def module_interp():
-    print("interp module running...")
-
-
-def module_regulargrid():
-    print("regulargrid module running...")
 
 
 def nearest_neighbour():
