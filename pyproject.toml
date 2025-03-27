@@ -48,7 +48,9 @@ format = "black:main"
 cartesiangrid = "iitp_interpolation.main:module_cartesiangrid"
 interp = "iitp_interpolation.main:module_interp"
 regulargrid = "iitp_interpolation.main:module_regulargrid"
-
+nearest_neighbour = "iitp_interpolation.main:nearest_neighbour"
+bilinear = "iitp_interpolation.main:bilinear"
+bicubic = "iitp_interpolation.main:bicubic"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
