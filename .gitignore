@@ -28,3 +28,6 @@ build/
 
 # Poetry settings
 poetry.lock
+
+# Pytest cache
+.coverage
