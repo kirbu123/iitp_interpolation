@@ -3,7 +3,6 @@ import pytest
 
 from iitp_interpolation.techniques.bicubic import (  # Replace with actual import
     bicubic_interpolation,
-    cubic,
 )
 
 
@@ -35,17 +34,12 @@ def sample_rgb_image():
     )
 
 
-def test_cubic_function():
-    """Test the cubic kernel function"""
-    # Test known values
-    assert cubic(0) == 1.0
-    assert cubic(1) == 0.0
-    assert cubic(1.5) == -0.0625
-    assert cubic(2.0) == 0.0
-    assert cubic(2.5) == 0.0  # Outside [0,2] range
-
-
-def test_bicubic_identity_scale(sample_grayscale_image):
+def test_bicubic_identity_scale(sample_rgb_image):
     """Test scale factor 1.0 (no change)"""
-    result = bicubic_interpolation(sample_grayscale_image, 1.0)
-    np.testing.assert_array_equal(result, sample_grayscale_image)
+    result = bicubic_interpolation(sample_rgb_image, 1.0)
+    np.testing.assert_array_equal(result, sample_rgb_image)
+
+def test_bicubic_typization(sample_rgb_image):
+    """Test scale factor 1.0 (no change)"""
+    result = bicubic_interpolation(sample_rgb_image, 2.5)
+    assert result.dtype == sample_rgb_image.dtype

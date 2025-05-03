@@ -1,56 +1,43 @@
 import numpy as np
 
 
-def bilinear_interpolation(input_img, scale_factor):
-    h, w = input_img.shape[:2]
-
-    new_h = int(h * scale_factor)
-    new_w = int(w * scale_factor)
-
-    x_new = np.linspace(0, w - 1, new_w)
-    y_new = np.linspace(0, h - 1, new_h)
-
-    if len(input_img.shape) == 3:
-        output_img = np.zeros((new_h, new_w, 3), dtype=input_img.dtype)
-        for c in range(3):
-            for i in range(new_h):
-                for j in range(new_w):
-                    x = x_new[j]
-                    y = y_new[i]
-
-                    x1, y1 = int(np.floor(x)), int(np.floor(y))
-                    x2, y2 = min(x1 + 1, w - 1), min(y1 + 1, h - 1)
-
-                    dx = x - x1
-                    dy = y - y1
-
-                    top = (1 - dx) * input_img[y1, x1, c] + dx * input_img[
-                        y1, x2, c
-                    ]
-                    bottom = (1 - dx) * input_img[y2, x1, c] + dx * input_img[
-                        y2, x2, c
-                    ]
-
-                    output_img[i, j, c] = (1 - dy) * top + dy * bottom
-    else:
-        output_img = np.zeros((new_h, new_w), dtype=input_img.dtype)
-        for i in range(new_h):
-            for j in range(new_w):
-                x = x_new[j]
-                y = y_new[i]
-
-                x1, y1 = int(np.floor(x)), int(np.floor(y))
-                x2, y2 = min(x1 + 1, w - 1), min(y1 + 1, h - 1)
-
-                dx = x - x1
-                dy = y - y1
-
-                top = (1 - dx) * input_img[y1, x1] + dx * input_img[y1, x2]
-                bottom = (1 - dx) * input_img[y2, x1] + dx * input_img[y2, x2]
-
-                output_img[i, j] = (1 - dy) * top + dy * bottom
-
-    return output_img
+def bilinear_interpolation(image, scale_factor):
+    if len(image.shape) != 3:
+        raise ValueError("Input must be 2D (grayscale) or 3D (color) array")
+    
+    h, w = image.shape[:2]
+    new_h = int(np.round(h * scale_factor))
+    new_w = int(np.round(w * scale_factor))
+    
+    # Create grid of new coordinates
+    x_new = np.linspace(0, w-1, new_w)
+    y_new = np.linspace(0, h-1, new_h)
+    
+    # Get floor and ceiling coordinates
+    x0 = np.floor(x_new).astype(int)
+    x1 = np.minimum(x0 + 1, w - 1)
+    y0 = np.floor(y_new).astype(int)
+    y1 = np.minimum(y0 + 1, h - 1)
+    
+    # Calculate weights with proper shapes
+    wx = (x_new - x0).reshape(1, -1, 1)  # Shape (1, new_w, 1)
+    wy = (y_new - y0).reshape(-1, 1, 1)    # Shape (new_h, 1, 1)
+    
+    # Get pixel values
+    Ia = image[y0][:, x0]  # Shape (new_h, new_w, C)
+    Ib = image[y1][:, x0]
+    Ic = image[y0][:, x1]
+    Id = image[y1][:, x1]
+    
+    # Perform interpolation with proper broadcasting
+    output = (
+        (1 - wy) * (1 - wx) * Ia +
+        (1 - wy) * wx * Ic +
+        wy * (1 - wx) * Ib +
+        wy * wx * Id
+    )
+    
+    return output.astype(image.dtype)
 
 
 __doc__ = bilinear_interpolation.__doc__

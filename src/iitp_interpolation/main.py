@@ -1,14 +1,24 @@
+import logging
+
 from .techniques.bicubic import bicubic_interpolation
 from .techniques.bilinear import bilinear_interpolation
 from .techniques.cartesiangrid import CartesianGrid
 from .techniques.nearest_neoghbour import nearest_neighbor_interpolation
-from .utils.image import show_image, show_images
+from .utils.image import show_image, show_images_original_size
 from .utils.parser import Parser
 
+# Create a logger for your module
+# Initialize logging (do this ONCE at startup)
+logging.basicConfig(
+    level=logging.INFO,  # Set minimum log level
+    format='%(levelname)s - %(message)s'  # Simple format
+)
+
+logger = logging.getLogger(__name__)
 
 def module_cartesiangrid():
 
-    print("cartesian module running...")
+    logger.info("cartesian module running...")
 
     # parse data
     parser = Parser(
@@ -26,14 +36,11 @@ def module_cartesiangrid():
     grid = CartesianGrid(limits, image)
 
     # interpolate for given points
-    print(
-        f"interpolate for given points: {grid(points[0], points[1], points[2])}"
-    )
+    logger.info(f"interpolate for given points: {grid(points[0], points[1], points[2])}")
 
 
 def nearest_neighbour():
-
-    print("nearest neighbour module running...")
+    logger.info("nearest neighbour module running...")
 
     # parse data
     parser = Parser(
@@ -45,19 +52,22 @@ def nearest_neighbour():
 
     image = params["image"]
 
-    scale_factor = 10
+    scale_factor = 2.5
     scaled_img = nearest_neighbor_interpolation(image, scale_factor)
 
-    show_images(
+    logger.info(f'Original shape: {image.shape}')
+    logger.info(f'Scaled shape: {scaled_img.shape}')
+
+    show_images_original_size(
         image,
         "Original Image",
         scaled_img,
-        f"Nearest-Neighbor (Scale: {scale_factor})",
+        f"Nearest-Neighbor interpolation (Scale: {scale_factor})",
     )
 
 
 def bilinear():
-    print("bilinear neighbour module running...")
+    logger.info("bilinear neighbour module running...")
 
     # parse data
     parser = Parser(
@@ -72,7 +82,10 @@ def bilinear():
     scale_factor = 2.5
     scaled_img = bilinear_interpolation(image, scale_factor)
 
-    show_images(
+    logger.info(f'Original shape: {image.shape}')
+    logger.info(f'Scaled shape: {scaled_img.shape}')
+
+    show_images_original_size(
         image,
         "Original Image",
         scaled_img,
@@ -81,7 +94,7 @@ def bilinear():
 
 
 def bicubic():
-    print("bicubic neighbour module running...")
+    logger.info("bicubic neighbour module running...")
 
     # parse data
     parser = Parser(
@@ -93,12 +106,18 @@ def bicubic():
 
     image = params["image"]
 
-    scale_factor = 1.1
+    scale_factor = 2.5
     scaled_img = bicubic_interpolation(image, scale_factor)
 
-    show_images(
+    logger.info(f'Original shape: {image.shape}')
+    logger.info(f'Scaled shape: {scaled_img.shape}')
+
+    show_images_original_size(
         image,
         "Original Image",
         scaled_img,
         f"bicubic Image (Scale: {scale_factor})",
     )
+
+if __name__ == "__main__":
+    logger.info("main script started as module")
