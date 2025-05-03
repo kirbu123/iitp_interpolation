@@ -1,7 +1,13 @@
 # noxfile.py
-import nox
+import nox_poetry
 
-@nox.session(python=["3.10", "3.7"])
+
+@nox_poetry.session(python=["3.11"])
+def lint(session):
+    session.run("poetry", "install", external=True)
+    session.run("ruff", "check", "--fix", ".")
+
+@nox_poetry.session(python=["3.11"])
 def tests(session):
     session.run("poetry", "install", external=True)
     session.run("pytest", "--cov")
