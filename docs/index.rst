@@ -9,6 +9,8 @@ The IITP_INTERPOLATION project
 
 This is the student IITP project. Here is implementation of common interpolation techniques. 
 
+Project paper: https://www.overleaf.com/project/675a076aed19c14b501fd5e3
+
 Installation
 ------------
 

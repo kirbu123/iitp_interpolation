@@ -4,6 +4,10 @@
   <h1>IITP student interpolation project</h1>
 </div>
 
+### project paper
+
+https://www.overleaf.com/project/675a076aed19c14b501fd5e3
+
 ### project installation && setup: 🚀
 
 1) ```git clone https://github.com/kirbu123/iitp_interpolation.git```
