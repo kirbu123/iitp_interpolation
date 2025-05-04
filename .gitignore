@@ -29,9 +29,6 @@ build/
 # PyCharm settings
 .idea/
 
-# Poetry settings
-poetry.lock
-
 # Cache
 .coverage
 .flake8
