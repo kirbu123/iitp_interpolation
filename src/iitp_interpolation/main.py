@@ -33,8 +33,8 @@ def module_cartesiangrid():
 
     # parse data
     parser = Parser(
-        describition="Process images with CartesianGrid interpolation.",
-        module_name="cartesiangrid",
+        description="Process images with CartesianGrid interpolation.",
+        module_name="cartesiangrid"
     )
     parser.make_parse()
     params = parser.get_params()
@@ -68,8 +68,8 @@ def nearest_neighbour():
 
     # parse data
     parser = Parser(
-        describition="Process images with nearest neighbour interpolation.",
-        module_name="nearest_neighbour",
+        description="Process images with nearest neighbour interpolation.",
+        module_name="nearest_neighbour"
     )
     parser.make_parse()
     params = parser.get_params()
@@ -107,7 +107,7 @@ def bilinear():
 
     # parse data
     parser = Parser(
-        describition="Process images with bilinear interpolation.",
+        description="Process images with bilinear interpolation.",
         module_name="bilinear",
     )
     parser.make_parse()
@@ -147,7 +147,7 @@ def bicubic():
 
     # parse data
     parser = Parser(
-        describition="Process images with bicubic interpolation.",
+        description="Process images with bicubic interpolation.",
         module_name="bicubic",
     )
     parser.make_parse()

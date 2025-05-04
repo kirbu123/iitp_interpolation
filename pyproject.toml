@@ -56,8 +56,16 @@ ruff = "^0.9.9"
 pytest = "^8.3.5"
 pytest-cov = "^6.0.0"
 mypy = "^1.15.0"
-sphinx = "^8.2.3"
+sphinx = "^7.2.6"
 
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^7.2.6"  # Latest in 7.x series
+myst-parser = "^2.0.0"
+sphinx-rtd-theme = "^2.0.0"
 
 [tool.ruff]
 # Enable flake8-bugbear (\B) rules.

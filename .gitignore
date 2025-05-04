@@ -11,6 +11,9 @@ src/__pycache__/
 *$py.class
 .pytest_cache/
 
+# Lock file
+poetry.lock
+
 # Distribution / packaging
 dist/
 build/
@@ -32,4 +35,9 @@ poetry.lock
 # Cache
 .coverage
 .flake8
+.nox
 .mypy_cache
+.ruff_cache
+
+# Sphynx build folder
+_build/
