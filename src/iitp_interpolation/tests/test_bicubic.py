@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from iitp_interpolation.techniques.bicubic import (  # Replace with actual import
+from iitp_interpolation.techniques.bicubic import (
     bicubic_interpolation,
 )
 
@@ -38,6 +38,7 @@ def test_bicubic_identity_scale(sample_rgb_image):
     """Test scale factor 1.0 (no change)"""
     result = bicubic_interpolation(sample_rgb_image, 1.0)
     np.testing.assert_array_equal(result, sample_rgb_image)
+
 
 def test_bicubic_typization(sample_rgb_image):
     """Test scale factor 1.0 (no change)"""

@@ -29,5 +29,7 @@ build/
 # Poetry settings
 poetry.lock
 
-# Pytest cache
+# Cache
 .coverage
+.flake8
+.mypy_cache

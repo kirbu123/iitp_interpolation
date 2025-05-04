@@ -16,8 +16,19 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-def module_cartesiangrid():
 
+def module_cartesiangrid():
+    """Process images using CartesianGrid interpolation.
+
+    This function:
+    1. Parses input arguments for CartesianGrid interpolation
+    2. Loads and displays the original image
+    3. Performs CartesianGrid interpolation
+    4. Logs and returns the interpolation results
+
+    The function uses the Parser class to handle command line arguments
+    and configuration for the CartesianGrid interpolation process.
+    """
     logger.info("cartesian module running...")
 
     # parse data
@@ -36,10 +47,23 @@ def module_cartesiangrid():
     grid = CartesianGrid(limits, image)
 
     # interpolate for given points
-    logger.info(f"interpolate for given points: {grid(points[0], points[1], points[2])}")
+    grid_result = grid(points[0], points[1], points[2])
+    logger.info(f"interpolate for given points: {grid_result}")
 
 
 def nearest_neighbour():
+    """Perform nearest neighbor interpolation on an input image.
+
+    This function:
+    1. Parses input arguments for nearest neighbor interpolation
+    2. Loads the original image
+    3. Applies nearest neighbor interpolation with a scale factor of 2.5
+    4. Displays original and scaled images side by side
+    5. Logs the dimensions of both images
+
+    Returns:
+        None: Results are displayed visually and logged
+    """
     logger.info("nearest neighbour module running...")
 
     # parse data
@@ -67,6 +91,18 @@ def nearest_neighbour():
 
 
 def bilinear():
+    """Perform bilinear interpolation on an input image.
+
+    This function:
+    1. Parses input arguments for bilinear interpolation
+    2. Loads the original image
+    3. Applies bilinear interpolation with a scale factor of 2.5
+    4. Displays original and interpolated images side by side
+    5. Logs the dimensions of both images
+
+    The bilinear interpolation provides smoother results than nearest neighbor
+    while being computationally less intensive than bicubic interpolation.
+    """
     logger.info("bilinear neighbour module running...")
 
     # parse data
@@ -94,6 +130,19 @@ def bilinear():
 
 
 def bicubic():
+    """Perform bicubic interpolation on an input image.
+
+    This function:
+    1. Parses input arguments for bicubic interpolation
+    2. Loads the original image
+    3. Applies bicubic interpolation with a scale factor of 2.5
+    4. Displays original and interpolated images side by side
+    5. Logs the dimensions of both images
+
+    Bicubic interpolation typically produces the highest quality results among
+    the common interpolation methods, at the cost of higher computational
+    complexity.
+    """
     logger.info("bicubic neighbour module running...")
 
     # parse data
@@ -119,5 +168,7 @@ def bicubic():
         f"bicubic Image (Scale: {scale_factor})",
     )
 
+
 if __name__ == "__main__":
+    """Main entry point when script is run directly."""
     logger.info("main script started as module")
