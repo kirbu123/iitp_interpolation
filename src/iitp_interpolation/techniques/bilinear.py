@@ -1,6 +1,9 @@
 import numpy as np
 
+from ..metrics.runtime_count import runtime_count
 
+
+@runtime_count
 def bilinear_interpolation(image, scale_factor):
 
     """

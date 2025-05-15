@@ -1,6 +1,9 @@
 import numpy as np
 
+from ..metrics.runtime_count import runtime_count
 
+
+@runtime_count
 def nearest_neighbor_interpolation(input_img, scale_factor) -> np.ndarray:
 
     """

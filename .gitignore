@@ -1,8 +1,10 @@
 # Python virtual environments
 venv/
 env/
+myenv/
 .venv/
 .env/
+.myenv/
 .python-version
 
 # Python cache files

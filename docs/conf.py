@@ -1,15 +1,3 @@
-'''
-
-project = "IITP_INTERPOLATION"
-author = "Bunin Kirill"
-copyright = f"2025, {author}"
-extensions = ['autoapi.extension']
-autoapi_dirs = ['../src/iitp_interpolation/techniques']  # Path to your Python package
-autoapi_options = ['members', 'undoc-members', 'show-inheritance', 'show-module-summary']
-
-'''
-
-
 """Sphinx configuration for IITP_INTERPOLATION documentation."""
 
 import os

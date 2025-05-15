@@ -1,7 +1,10 @@
 import numpy as np
 from scipy import ndimage
 
+from ..metrics.runtime_count import runtime_count
 
+
+@runtime_count
 def bicubic_interpolation(
         image: np.ndarray, scale_factor: float
 ) -> np.ndarray:

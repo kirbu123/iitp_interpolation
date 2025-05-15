@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 def module_cartesiangrid():
+
     """Process images using CartesianGrid interpolation.
 
     This function:
@@ -29,6 +30,7 @@ def module_cartesiangrid():
     The function uses the Parser class to handle command line arguments
     and configuration for the CartesianGrid interpolation process.
     """
+
     logger.info("cartesian module running...")
 
     # parse data
@@ -52,6 +54,7 @@ def module_cartesiangrid():
 
 
 def nearest_neighbour():
+
     """Perform nearest neighbor interpolation on an input image.
 
     This function:
@@ -64,6 +67,7 @@ def nearest_neighbour():
     Returns:
         None: Results are displayed visually and logged
     """
+
     logger.info("nearest neighbour module running...")
 
     # parse data
@@ -91,6 +95,7 @@ def nearest_neighbour():
 
 
 def bilinear():
+
     """Perform bilinear interpolation on an input image.
 
     This function:
@@ -103,6 +108,7 @@ def bilinear():
     The bilinear interpolation provides smoother results than nearest neighbor
     while being computationally less intensive than bicubic interpolation.
     """
+
     logger.info("bilinear neighbour module running...")
 
     # parse data
@@ -118,6 +124,7 @@ def bilinear():
     scale_factor = 2.5
     scaled_img = bilinear_interpolation(image, scale_factor)
 
+
     logger.info(f'Original shape: {image.shape}')
     logger.info(f'Scaled shape: {scaled_img.shape}')
 
@@ -130,6 +137,7 @@ def bilinear():
 
 
 def bicubic():
+
     """Perform bicubic interpolation on an input image.
 
     This function:
@@ -143,6 +151,7 @@ def bicubic():
     the common interpolation methods, at the cost of higher computational
     complexity.
     """
+
     logger.info("bicubic neighbour module running...")
 
     # parse data
