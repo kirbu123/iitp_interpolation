@@ -66,6 +66,10 @@ optional = true
 sphinx = "^7.2.6"  # Latest in 7.x series
 myst-parser = "^2.0.0"
 sphinx-rtd-theme = "^2.0.0"
+sphinx-autoapi = "^3.6.0"
+furo = "^2024.8.6"
+sphinx-copybutton = "^0.5.2"
+sphinx-design = "^0.6.1"
 
 [tool.ruff]
 # Enable flake8-bugbear (\B) rules.

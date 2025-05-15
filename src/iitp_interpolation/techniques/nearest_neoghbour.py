@@ -2,6 +2,38 @@ import numpy as np
 
 
 def nearest_neighbor_interpolation(input_img, scale_factor) -> np.ndarray:
+
+    """
+    Nearest neighbor interpolation for grayscale and color images.
+
+    This module provides efficient nearest neighbor interpolation implementation
+    that preserves original pixel values without blending. Suitable for both
+    grayscale (2D) and color (3D) images, with proper edge handling and
+    dimension validation.
+
+    Key features:
+    - Strict input validation for scale factor and image content
+    - Automatic handling of single-channel and multi-channel images
+    - Precise coordinate mapping with proper edge alignment
+    - Index clipping to prevent out-of-bounds access
+    - Preservation of original pixel values (no smoothing/blurring)
+
+    Example usage:
+        >>> import numpy as np
+        >>> from nearest_neighbor_interpolation import nearest_neighbor_interpolation
+        >>> # For a color image (RGB)
+        >>> img_rgb = np.random.randint(0, 256, (100, 100, 3), dtype=np.uint8)
+        >>> scaled_rgb = nearest_neighbor_interpolation(img_rgb, 2.0)
+        >>> # For a grayscale image
+        >>> img_gray = np.random.randint(0, 256, (100, 100), dtype=np.uint8)
+        >>> scaled_gray = nearest_neighbor_interpolation(img_gray, 0.5)
+
+    Note:
+        This method is computationally efficient but may produce blocky results
+        when upscaling. For smoother results, consider bilinear or bicubic
+        interpolation methods.
+    """
+
     if scale_factor <= 0:
         raise ValueError("Scale factor must be positive")
 

@@ -2,6 +2,33 @@ import numpy as np
 
 
 def bilinear_interpolation(image, scale_factor):
+
+    """
+    Bilinear interpolation implementation for grayscale and color images.
+
+    This module provides a function to perform bilinear interpolation on images,
+    supporting both grayscale (2D) and color (3D) arrays. The implementation
+    manually computes the interpolation weights and applies them to neighboring
+    pixels to produce a smoothly scaled output image.
+
+    The main function bilinear_interpolation() handles:
+    - Input validation for 2D or 3D arrays
+    - Dynamic calculation of new dimensions based on scale factor
+    - Proper coordinate mapping between original and scaled images
+    - Weighted averaging of neighboring pixels
+    - Type preservation of the output image
+
+    Example usage:
+        >>> from bilinear_interpolation import bilinear_interpolation
+        >>> import numpy as np
+        >>> # For color image (3 channels)
+        >>> img_color = np.random.randint(0, 256, (100, 100, 3), dtype=np.uint8)
+        >>> scaled_color = bilinear_interpolation(img_color, 1.5)
+        >>> # For grayscale image
+        >>> img_gray = np.random.randint(0, 256, (100, 100), dtype=np.uint8)
+        >>> scaled_gray = bilinear_interpolation(img_gray, 1.5)
+    """
+
     if len(image.shape) != 3:
         raise ValueError("Input must be 2D (grayscale) or 3D (color) array")
 
